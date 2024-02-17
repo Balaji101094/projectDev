@@ -1,0 +1,93 @@
+{
+  "name": "todo-frontend",
+  "version": "0.5.0",
+  "description": "The frontend of a simple todo app with a MongoDB backend",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/mindsphere/devops-demo.git"
+  },
+  "author": "Roger Meier <r.meier@siemens.com>",
+  "contributors": [
+    "Fabio Huser <fabio.huser@siemens.com>",
+    "Diego Louzán <diego.louzan.ext@siemens.com>"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve --configuration=mdsplocal",
+    "build": "ng build --configuration=mdsplocal",
+    "build:dev": "ng build",
+    "build:prod": "ng build --configuration=production",
+    "test": "ng test",
+    "eclint": "eclint check $(git ls-files)",
+    "lint": "ng lint && markdownlint --ignore '**/node_modules/**' . && yarn eclint",
+    "e2e": "ng e2e",
+    "license": "license-checker --onlyAllow 'Apache-2.0; BSD; BSD-2-Clause; BSD-3-Clause; ISC; MIT; Unlicense; WTFPL; CC-BY-3.0; CC0-1.0' --production",
+    "license:all": "yarn license && yarn --cwd server/ license && yarn --cwd devops/devopsadmin license",
+    "commitlint": "commitlint --from=origin/master",
+    "mdsp:zip": "(which zip > /dev/null || { echo \"Please install the 'zip' command\"; exit 1; }) && { rm -f todo.zip; zip -r todo ./server -x 'server/node_modules/*'; }"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {
+    "@angular/animations": "^6.1.0",
+    "@angular/common": "^6.1.0",
+    "@angular/compiler": "^6.1.0",
+    "@angular/core": "^6.1.0",
+    "@angular/forms": "^6.1.0",
+    "@angular/platform-browser": "^6.1.0",
+    "@angular/platform-browser-dynamic": "^6.1.0",
+    "@angular/router": "^6.1.0",
+    "bootstrap": "^4.3.1",
+    "core-js": "^2.5.4",
+    "font-awesome": "^4.7.0",
+    "ngx-cookie-service": "^2.0.2",
+    "rxjs": "^6.3.3",
+    "zone.js": "~0.8.26"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.8.0",
+    "@angular/cli": "~6.1.4",
+    "@angular/compiler-cli": "^6.1.0",
+    "@angular/language-service": "^6.1.0",
+    "@commitlint/cli": "^7.5.0",
+    "@commitlint/config-conventional": "^7.5.0",
+    "@types/jasmine": "~2.8.6",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
+    "chromedriver": "^2.41.0",
+    "codelyzer": "^4.5.0",
+    "eclint": "^2.8.0",
+    "https-proxy-agent": "^2.2.1",
+    "husky": "^1.3.1",
+    "jasmine-core": "~2.99.1",
+    "jasmine-reporters": "^2.3.2",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "^3.1.4",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "~2.0.0",
+    "karma-jasmine": "~1.1.1",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-junit-reporter": "^1.2.0",
+    "karma-webdriver-launcher": "^1.0.5",
+    "license-checker": "^20.2.0",
+    "markdownlint-cli": "^0.13.0",
+    "nyc": "^14.1.1",
+    "protractor": "~5.4.0",
+    "ts-node": "~5.0.1",
+    "tslint": "~5.9.1",
+    "typescript": "~2.9.2"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}
